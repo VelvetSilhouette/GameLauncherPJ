@@ -70,7 +70,7 @@
                VerticalAlignment="Center" Margin="60"/>
             <Button Name="Login_btn" Content="LOGIN" Grid.Row="1" Grid.Column="1" 
                     Width="100" Height="40" Margin="230 50 50 100"
-                    Background="#00b8e6" Foreground="Black" FontSize="30" FontWeight="Bold" 
+                    Background="Black" Foreground="#00b8e6" FontSize="30" FontWeight="Bold" 
                     Padding="2" FontFamily="Corbel" Click="Login_btn_Click"/>
             <Button Name="ShowPassword_btn" Grid.Row="1" Grid.Column="1" Width="20" Height="20" 
                     Margin="310 10 50 170" Background="Transparent" Visibility="Hidden" 
