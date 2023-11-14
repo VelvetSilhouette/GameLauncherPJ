@@ -1,0 +1,83 @@
+﻿<Window x:Class="GameLauncherPJ.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GameLauncherPJ"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Icon="Resources\Game_Launcher_Icon.png" 
+        Title="Game Launcher" Height="450" Width="800"
+        WindowStyle="None"
+        Background="Transparent">
+    <Border BorderThickness="1" CornerRadius="8">
+        <Grid>
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="2.5,1">
+                    <GradientStop Color="#000000" Offset="0.25"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Name="Close_btn" Grid.Row="0" Grid.Column="1" Height="30" Width="30" Background="Transparent"
+                    Content="X" Click="Close_Btn_Click" BorderThickness="0"
+                    HorizontalAlignment="Right" VerticalAlignment="Top"
+                      FontWeight="Bold" FontSize="20" Padding="1" Margin="3"/>
+             <TextBox Name="Usernametxtbox" Grid.Row="0" Grid.Column="1" Width="230" Height="40" TextWrapping="Wrap"
+                 HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                 Margin="50 50 50 10" Padding="7" TextAlignment="Left" FontSize="15">
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="7"/>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+            <PasswordBox Name="Passwordtxtbox" Grid.Row="1" Grid.Column="1" 
+                         Width="230" Height="40"
+                         HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                         Margin="50 0 50 170" Padding="7" FontSize="15" 
+                         GotFocus="Passwordtxtbox_GotFocus" 
+                         LostFocus="Passwordtxtbox_LostFocus" KeyDown="Passwordtxtbox_KeyDown">
+                <PasswordBox.Template>
+                    <ControlTemplate TargetType="{x:Type PasswordBox}">
+                        <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="7" Background="White">
+                            <ScrollViewer x:Name="PART_ContentHost"/>
+                        </Border>
+                    </ControlTemplate>
+                </PasswordBox.Template>
+            </PasswordBox>
+            <TextBox Name="Passwordshowtxtbox" Grid.Row="1" Grid.Column="1" 
+                     Width="230" Height="40" TextWrapping="Wrap"
+                     HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                     Margin="50 0 50 170" Padding="7" TextAlignment="Left" 
+                     FontSize="15" Visibility="Hidden" KeyDown="Passwordshowtxtbox_KeyDown">
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="7"/>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+            <Image Grid.Row="0" Grid.RowSpan="2" Grid.ColumnSpan="2" Source="\Resources\Game_Launcher_Icon_Large.png" 
+               Width="350" Height="300" HorizontalAlignment="Left" 
+               VerticalAlignment="Center" Margin="60"/>
+            <Button Name="Login_btn" Content="LOGIN" Grid.Row="1" Grid.Column="1" 
+                    Width="100" Height="40" Margin="230 50 50 100"
+                    Background="#00b8e6" Foreground="Black" FontSize="30" FontWeight="Bold" 
+                    Padding="2" FontFamily="Corbel" Click="Login_btn_Click"/>
+            <Button Name="ShowPassword_btn" Grid.Row="1" Grid.Column="1" Width="20" Height="20" 
+                    Margin="310 10 50 170" Background="Transparent" Visibility="Hidden" 
+                    BorderBrush="Transparent" Click="ShowPassword_btn_Click">
+                <Image Source="/Resources/Show_Password_Icon.png" 
+                       Width="20" Height="20"/>
+            </Button>
+        </Grid>
+    </Border>
+</Window>
