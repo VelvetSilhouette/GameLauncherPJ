@@ -78,11 +78,11 @@ namespace GameLauncherPJ
                     MainMenu mainMenu = new MainMenu();
                     mainMenu.Show();
                     this.Close();
-                }
-                else 
-                { MessageBox.Show("Please Enter the right account, retard", "Retard Alert"); }
+                }  
             }
-        
+            else
+            { MessageBox.Show("Please Enter the right account, retard", "Retard Alert"); }
+
         }
     }
 }
