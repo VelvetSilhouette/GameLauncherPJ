@@ -80,7 +80,7 @@ namespace GameLauncherPJ
                     this.Close();
                 }
                 else 
-                {MessageBox.Show("Please Enter the right account, retard","Retard Alert")};
+                { MessageBox.Show("Please Enter the right account, retard", "Retard Alert"); }
             }
         
         }
