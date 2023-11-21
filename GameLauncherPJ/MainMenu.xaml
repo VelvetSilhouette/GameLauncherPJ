@@ -5,8 +5,58 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GameLauncherPJ"
         mc:Ignorable="d"
-        Title="MainMenu" Height="450" Width="800">
+        Title="MainMenu" Height="1300" Width="1600" WindowState="Maximized"
+        WindowStartupLocation="CenterScreen"  WindowStyle="None" MouseDown="Window_MouseDown">
     <Grid>
-        
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,1" EndPoint="2.5,1">
+                <GradientStop Color="#000000" Offset="0.25"/>
+                <GradientStop Color="White" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition Height="200"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Button Name="Close_btn" Style="{StaticResource WindowButton}" Grid.Row="0" Grid.Column="1" Content="X" Click="Close_Btn_Click" Margin="3"/>
+        <Button Name="ScreenMode_btn" Style="{StaticResource WindowButton}" Grid.Row="0" Grid.Column="1" Content="ロ" Margin="3 3 30 3"  FontWeight="ExtraBold" Click="ScreenMode_btn_Click"></Button> 
+        <Button Name="Minimize_btn" Style="{StaticResource WindowButton}" Grid.Row="0" Grid.Column="1" Content="-" Click="Minimize_Btn_Click" Padding="0 -6" Margin="3 3 60 3"  FontSize="30" FontWeight="ExtraBold"/>
+        <ScrollViewer Padding="10" Grid.RowSpan="2" Grid.Row="1" Width="300" HorizontalAlignment="Left" VerticalAlignment="Stretch" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <ListView Name="game_list" Background="Black" ItemsSource="{Binding GameList}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="{Binding PictureLink}" Width="20" Height="20"></Image>
+                            <Label Foreground="LightGray" Content="{Binding GameName}"></Label>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollViewer>
+        <Border Grid.Row="1" Grid.Column="1" Padding="10">
+            <TextBox Name="Description_txtbx" IsEnabled="False" Text="{Binding SelectedItem.GameDesc,ElementName=game_list}" Foreground="White" Padding="10" Background="Transparent">
+            </TextBox>
+        </Border>
+        <Button Name="Play_btn" Content="PLAY" FontSize="50" Grid.Column="1" FontWeight="ExtraBold" FontFamily="Consolas" Foreground="DarkBlue" Grid.Row="2" Width="150" Height="70" 
+                HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="30 30 10 30" Background="#00b8e6" Click="Play_Btn_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="1"></Setter>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Content="EDIT" Grid.Column="1" FontSize="50" FontWeight="ExtraBold" FontFamily="Consolas" Foreground="LightGray" Grid.Row="2" Width="150" Height="70" 
+        HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="30 30 170 30" Background="Gray">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="1"></Setter>
+                </Style>
+            </Button.Resources>
+        </Button>
     </Grid>
 </Window>

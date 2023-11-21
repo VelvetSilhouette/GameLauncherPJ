@@ -10,8 +10,9 @@
         Icon="Resources\Game_Launcher_Icon.png" 
         Title="Game Launcher" Height="450" Width="800"
         WindowStyle="None"
-        Background="Transparent">
-    <Border BorderThickness="1" CornerRadius="8">
+        Background="Transparent" MouseDown="Window_MouseDown"
+        >
+    <Border BorderThickness="1" CornerRadius="30" BorderBrush="Black">
         <Grid>
             <Grid.Background>
                 <LinearGradientBrush StartPoint="0,1" EndPoint="2.5,1">
@@ -27,13 +28,10 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Name="Close_btn" Grid.Row="0" Grid.Column="1" Height="30" Width="30" Background="Transparent"
-                    Content="X" Click="Close_Btn_Click" BorderThickness="0"
-                    HorizontalAlignment="Right" VerticalAlignment="Top"
-                    FontWeight="Bold" FontSize="20" Padding="1" Margin="3"/>
+            <Button Name="Close_btn" Style="{StaticResource WindowButton}" Grid.Row="0" Grid.Column="1" Content="X" Click="Close_Btn_Click" Margin="3"/>
+            <Button Name="Minimize_btn" Style="{StaticResource WindowButton}" Grid.Row="0" Grid.Column="1" Content="-" Click="Minimize_Btn_Click" Padding="0 -6" Margin="3 3 30 3"  FontSize="30" FontWeight="ExtraBold"/>
             <TextBox Name="Usernametxtbox" Grid.Row="0" Grid.Column="1" Width="230" Height="40" TextWrapping="Wrap"
-                 HorizontalAlignment="Right" VerticalAlignment="Bottom"
-                 Margin="50 50 50 10" Padding="7" TextAlignment="Left" FontSize="15">
+                 HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="50 50 50 10" Padding="7" TextAlignment="Left" FontSize="15" GotFocus="Usernametxtbox_GotFocus" LostFocus="Usernametxtbox_LostFocus">
                 <TextBox.Resources>
                     <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="7"/>
@@ -45,20 +43,18 @@
                          HorizontalAlignment="Right" VerticalAlignment="Bottom"
                          Margin="50 0 50 170" Padding="7" FontSize="15"
                          PasswordChanged="Passwordtxtbox_PasswordChanged"
-                         KeyDown="Passwordtxtbox_KeyDown">
+                         KeyDown="Passwordtxtbox_KeyDown" GotFocus="Passwordtxtbox_GotFocus" LostFocus="Passwordtxtbox_LostFocus">
                     <PasswordBox.Template>
                     <ControlTemplate TargetType="{x:Type PasswordBox}">
                     <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="7" Background="White">
                     <ScrollViewer x:Name="PART_ContentHost"/>
                     </Border>
                     </ControlTemplate>
-                </PasswordBox.Template>
+                    </PasswordBox.Template>
             </PasswordBox>
-            <TextBox Name="Passwordshowtxtbox" Grid.Row="1" Grid.Column="1" 
-                     Width="230" Height="40" TextWrapping="Wrap"
-                     HorizontalAlignment="Right" VerticalAlignment="Bottom"
-                     Margin="50 0 50 170" Padding="7" TextAlignment="Left" 
-                     FontSize="15" Visibility="Hidden" KeyDown="Passwordshowtxtbox_KeyDown">
+            <TextBox Name="Passwordshowtxtbox" Grid.Row="1" Grid.Column="1" Width="230" Height="40" TextWrapping="Wrap" HorizontalAlignment="Right" 
+                     VerticalAlignment="Bottom" Margin="50 0 50 170" Padding="7" TextAlignment="Left" FontSize="15" Visibility="Hidden" 
+                     KeyDown="Passwordshowtxtbox_KeyDown" TextChanged="Passwordshowtxtbox_TextChanged" >
                      <TextBox.Resources>
                      <Style TargetType="{x:Type Border}">
                      <Setter Property="CornerRadius" Value="7"/>
@@ -76,8 +72,12 @@
                     Margin="310 10 50 170" Background="Transparent" Visibility="Hidden" 
                     BorderBrush="Transparent" Click="ShowPassword_btn_Click">
                     <Image Source="/Resources/Show_Password_Icon.png" 
-                       Width="20" Height="20"/>
+                     Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Button>
+            <Label Name="usernamelbl" Content="Username" Grid.Row="0" Grid.Column="1" Foreground="LightGray" Margin="-40 10 10 12" FontSize="20"
+                   HorizontalAlignment="Center" VerticalAlignment="Bottom" IsHitTestVisible="False"></Label>
+            <Label Name="passwordlbl" Content="Password" Grid.Row="1" Grid.Column="1" Foreground="LightGray" Margin="-40 14 10 10" FontSize="20"
+       HorizontalAlignment="Center" VerticalAlignment="Top" IsHitTestVisible="False"></Label>
         </Grid>
     </Border>
 </Window>
