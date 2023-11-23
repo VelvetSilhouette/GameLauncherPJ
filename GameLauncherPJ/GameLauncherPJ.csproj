@@ -10,17 +10,25 @@
   <ItemGroup>
     <None Remove="Resources\Game_Launcher_Icon.png" />
     <None Remove="Resources\Game_Launcher_Icon_Large.png" />
+    <None Remove="Resources\Images\Edit_Button_Icon.png" />
+    <None Remove="Resources\Images\Play_Button_Icon.png" />
     <None Remove="Resources\Show_Password_Icon.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Resources\Game_Launcher_Icon.png">
+    <Content Include="Resources\Images\Edit_Button_Icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Game_Launcher_Icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Game_Launcher_Icon_Large.png">
+    <Content Include="Resources\Images\Game_Launcher_Icon_Large.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Show_Password_Icon.png">
+    <Content Include="Resources\Images\Play_Button_Icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Show_Password_Icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

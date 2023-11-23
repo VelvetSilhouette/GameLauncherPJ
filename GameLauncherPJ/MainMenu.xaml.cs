@@ -27,7 +27,7 @@ namespace GameLauncherPJ
         {
             InitializeComponent();
             gameList = new ObservableCollection<GameInfo>();
-            gameList.Add(new GameInfo("A", "Long Loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong man", "A", "Resources\\Game_Launcher_Icon_Large.png"));
+            gameList.Add(new GameInfo("Nordjak Simulator", "Actually it was rather recent Norway switched to normal toilets, i remember we had a shitting log when i was a kid like 15 years ago, normal toilets were very expensive at the time and it was more like a flex to your neighbors if you owned one. Once we started extracting more and more oil, the wealth of the population increased and as a result more or less everybody completely switched to normal toilets a few years back. I do miss the log sometimes though, its way comfortable and relaxing than a regular toilet. The problem is the breeze, especially in winter we would have icicles down our anus so we tried to eat fiber rich foods to poop less frequently. I come from a rather rich family though ,so we had an indoor shitting log, the cold wasnt a problem.", "A", "C:\\Users\\thanh\\OneDrive\\Pictures\\f55.png"));
             gameList.Add(new GameInfo("A", "A", "A", "Resources\\Game_Launcher_Icon_Large.png"));
             this.DataContext = this;
         }
@@ -40,7 +40,8 @@ namespace GameLauncherPJ
 
         private void ScreenMode_btn_Click(object sender, RoutedEventArgs e)
         {
-            this.WindowState = WindowState == WindowState.Normal? WindowState=WindowState.Maximized : WindowState=WindowState.Normal ;
+            this.WindowState = WindowState == WindowState.Normal? WindowState=WindowState.Maximized : WindowState=WindowState.Normal;
+            this.ResizeMode = WindowState == WindowState.Normal ? ResizeMode.CanResize : ResizeMode.NoResize;
         }
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {

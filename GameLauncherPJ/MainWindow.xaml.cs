@@ -60,10 +60,8 @@ namespace GameLauncherPJ
         private void ShowPassword_btn_Click(object sender, RoutedEventArgs e)
         {
             //Show password button
-            Passwordshowtxtbox.Visibility = Passwordshowtxtbox.Visibility = Passwordtxtbox.Visibility == Visibility.Visible ? Visibility.Visible : Visibility.Hidden;
-            Passwordtxtbox.Visibility = Passwordtxtbox.Visibility = Passwordshowtxtbox.Visibility == Visibility.Visible ? Visibility.Visible : Visibility.Hidden;
-
-          /*  if (Passwordshowtxtbox.Visibility == Visibility.Visible)
+ 
+            if (Passwordshowtxtbox.Visibility == Visibility.Visible)
             {
                 Passwordshowtxtbox.Visibility = Visibility.Hidden;
                 Passwordtxtbox.Visibility = Visibility.Visible;
@@ -74,13 +72,24 @@ namespace GameLauncherPJ
                 Passwordtxtbox.Visibility = Visibility.Hidden;
                 Passwordshowtxtbox.Visibility = Visibility.Visible;
                 Passwordshowtxtbox.Text = Passwordtxtbox.Password.ToString();
-            }*/
+            }
         }
-        //limit password length to 16 characters
+        /*limit password length to 16 characters*/
         private void Passwordtxtbox_KeyDown(object sender, KeyEventArgs e)
         {
-            if (Passwordtxtbox.Password.Length >= 16)
-            { e.Handled = true; }
+            e.Handled = Passwordtxtbox.Password.Length >= 16 || Passwordtxtbox.Password.Length >= 16 ? true : false;
+        }
+
+        private void Passwordtxtbox_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                Login_btn_Click(sender, e);
+            }
+
+            
+            /* if (Passwordtxtbox.Password.Length >= 16)
+            { e.Handled = true; }*/
         }
 
         private void Passwordtxtbox_GotFocus(object sender, RoutedEventArgs e)
@@ -99,8 +108,7 @@ namespace GameLauncherPJ
 
         private void Passwordshowtxtbox_KeyDown(object sender, KeyEventArgs e)
         {
-            if (Passwordshowtxtbox.Text.Length >= 16)
-            { e.Handled = true;}    
+            e.Handled = Passwordshowtxtbox.Text.Length >= 16 || Passwordshowtxtbox.Text.Length >= 16 ? true : false;
         }
         //Login button, for now use a test account to test login to MainMenu
         //id: admin | password:admin
@@ -140,5 +148,6 @@ namespace GameLauncherPJ
                 this.DragMove();
             }
         }
+
     }
 }
