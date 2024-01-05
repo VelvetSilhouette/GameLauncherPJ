@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,25 +24,26 @@ namespace GameLauncherPJ
     {
         private ObservableCollection<GameInfo> gameList;
         public ObservableCollection<GameInfo> GameList { get { return gameList; } set { gameList = value; OnPropertyChanged("GameList"); } }
+
+        // TODO: nam ngu
         public MainMenu()
         {
             InitializeComponent();
             gameList = new ObservableCollection<GameInfo>();
-            gameList.Add(new GameInfo("Nordjak Simulator", "Actually it was rather recent Norway switched to normal toilets, i remember we had a shitting log when i was a kid like 15 years ago, normal toilets were very expensive at the time and it was more like a flex to your neighbors if you owned one. Once we started extracting more and more oil, the wealth of the population increased and as a result more or less everybody completely switched to normal toilets a few years back. I do miss the log sometimes though, its way comfortable and relaxing than a regular toilet. The problem is the breeze, especially in winter we would have icicles down our anus so we tried to eat fiber rich foods to poop less frequently. I come from a rather rich family though ,so we had an indoor shitting log, the cold wasnt a problem.", "A", "C:\\Users\\thanh\\OneDrive\\Pictures\\f55.png"));
-            gameList.Add(new GameInfo("A", "A", "A", "Resources\\Game_Launcher_Icon_Large.png"));
+            //Test Game
+            GameList.Add(new GameInfo("A", "A", "steam://rungameid/108710", "C:\\Users\\thanh\\OneDrive\\Pictures\\f55.png"));
+            GameList.Add(new GameInfo("A", "A", "A", "Resources\\Game_Launcher_Icon_Large.png"));
             this.DataContext = this;
         }
-
-        public void Close_Btn_Click(object sender, RoutedEventArgs e)
+        public void Close_Btn2_Click(object sender, RoutedEventArgs e)
         {
             //literally just a close button for the application because Windows Border is ugly af
             this.Close();
         }
-
         private void ScreenMode_btn_Click(object sender, RoutedEventArgs e)
         {
-            this.WindowState = WindowState == WindowState.Normal? WindowState=WindowState.Maximized : WindowState=WindowState.Normal;
-            this.ResizeMode = WindowState == WindowState.Normal ? ResizeMode.CanResize : ResizeMode.NoResize;
+            this.WindowState = WindowState == WindowState.Normal? WindowState = WindowState.Maximized : WindowState=WindowState.Normal;
+            this.ResizeMode = WindowState == WindowState.Normal? ResizeMode.CanResize : ResizeMode.NoResize;
         }
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -55,13 +57,22 @@ namespace GameLauncherPJ
             // Minimized button
             this.WindowState = WindowState.Minimized;
         }
-
         private void Play_Btn_Click(object sender, RoutedEventArgs e)
         {
-            //Test Adding more data to list to see if the listview update using the play button
-            gameList.Add(new GameInfo("A", "A", "A", "Resources\\Game_Launcher_Icon_Large.png"));
+            //Create an object to get exe link to run the app
+            GameInfo gametoprocess = game_list.SelectedItem as GameInfo;
+            //Process start, checck exe link to see if it a steam link or normal exe link to process correctly
+            if(gametoprocess.ExeLink.Contains("steam://"))
+            {
+                Process.Start(@"C:\Program Files (x86)\Steam\Steam.exe", gametoprocess.ExeLink);
+            }
+            else
+            {
+                Process.Start(gametoprocess.ExeLink);
+            }    
+            
         }
-
+        //IPropertychanged to handle Adding new Game to ObservableCollection GameList
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string propertyName)
         {
@@ -71,5 +82,25 @@ namespace GameLauncherPJ
             }           
         }
 
+        private void Edit_Btn_Click(object sender, RoutedEventArgs e)
+        {
+            if(game_list.SelectedItem != null)
+            {
+                GameInfo SelectedGame = game_list.SelectedItem as GameInfo;
+                EditMenu edit1 = new EditMenu(this,SelectedGame);
+                edit1.ShowDialog();
+                //Open Edit menu of selected game 
+            }
+        }
+        public void FinishEdit(GameInfo EditedGame)
+        {
+            //Change Selected Game info to Edited one
+            game_list.SelectedItem = EditedGame;
+        }
+
+        private void Delete_Btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

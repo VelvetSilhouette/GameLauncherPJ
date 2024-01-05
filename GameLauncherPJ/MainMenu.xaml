@@ -11,16 +11,20 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="50"></RowDefinition>
             <RowDefinition ></RowDefinition>
-            <RowDefinition Height="200"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="300"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Button Name="Close_btn" Style="{StaticResource WindowButton}" Grid.Row="0" Grid.Column="1" Content="X" Click="Close_Btn_Click" Margin="3"/>
-        <Button Name="ScreenMode_btn" Style="{StaticResource WindowButton}" Grid.Row="0" Grid.Column="1" Content="ロ" Margin="3 3 30 3"  FontWeight="ExtraBold" Click="ScreenMode_btn_Click"></Button> 
-        <Button Name="Minimize_btn" Style="{StaticResource WindowButton}" Grid.Row="0" Grid.Column="1" Content="-" Click="Minimize_Btn_Click" Padding="0 -6" Margin="3 3 60 3"  FontSize="30" FontWeight="ExtraBold"/>
-        <ScrollViewer Padding="10" Grid.RowSpan="2" Grid.Row="1" Width="300" HorizontalAlignment="Left" VerticalAlignment="Stretch" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+        <Button Name="Close_btn2" Style="{StaticResource WindowButton}" Grid.Row="0" Grid.Column="1" 
+                Content="X" Click="Close_Btn2_Click" Margin="3"/>
+        <Button Name="ScreenMode_btn" Style="{StaticResource WindowButton}" Grid.Row="0" Grid.Column="1" Content="ロ" 
+                Margin="3 3 30 3"  FontWeight="ExtraBold" Click="ScreenMode_btn_Click"></Button> 
+        <Button Name="Minimize_btn" Style="{StaticResource WindowButton}" Grid.Row="0" Grid.Column="1" 
+                Content="-" Click="Minimize_Btn_Click" Padding="0 -6" Margin="3 3 60 3"  FontSize="30" FontWeight="ExtraBold"/>
+        <ScrollViewer Grid.RowSpan="2" Grid.Row="1" Width="300" HorizontalAlignment="Left" 
+                      VerticalAlignment="Stretch" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
             <ListView Name="game_list" Background="Black" ItemsSource="{Binding GameList}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -33,30 +37,40 @@
             </ListView>
         </ScrollViewer>
         <Border Grid.Row="1" Grid.Column="1">
-            <DockPanel>
-                <Image Source="{Binding SelectedItem.PictureLink,ElementName=game_list}" Stretch="Uniform" Height="300" DockPanel.Dock="Top"></Image>
-                <TextBox Name="Description_txtbx" Padding="10" TextWrapping="Wrap" IsEnabled="False" Text="{Binding SelectedItem.GameDesc,ElementName=game_list}" 
-                         Foreground="White" Background="Transparent" DockPanel.Dock="Bottom" Margin="0 10">
+            <DockPanel Margin="5 5 5 5">
+                <Image Source="{Binding SelectedItem.PictureLink,ElementName=game_list}" Stretch="Uniform" 
+                       Height="300" DockPanel.Dock="Top"></Image>
+                <TextBox Name="Description_txtbx" Padding="10" TextWrapping="Wrap" IsEnabled="False"
+                         Text="{Binding SelectedItem.GameDesc,ElementName=game_list}" BorderThickness="0"
+                         Foreground="White" Background="Transparent" DockPanel.Dock="Bottom" Margin="10 10 10 10">
                 </TextBox>
             </DockPanel>
         </Border>
-        <Button Name="Play_btn" FontSize="50" Grid.Column="1" FontWeight="ExtraBold" FontFamily="Consolas" Foreground="DarkBlue" Grid.Row="2" Width="150" Height="70" 
-                HorizontalAlignment="Right" VerticalAlignment="Top" Margin="30 10 10 30" Background="#00b8e6" Click="Play_Btn_Click" ToolTip="Play">
-            <Image Source="Resources/Images/Play_Button_Icon.png" Margin="2 5 2 0"></Image>
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="1"></Setter>
-                </Style>
-            </Button.Resources>
+        <Button Name="Play_btn" FontSize="50" Grid.Column="1" FontWeight="ExtraBold" FontFamily="Consolas" 
+                Foreground="DarkBlue" Grid.Row="2" Width="120" Height="50" HorizontalAlignment="Right" 
+                VerticalAlignment="Top" Margin="0 10 10 30" Background="#00b8e6" Click="Play_Btn_Click" 
+                ToolTip="Play">
+            <Image Source="Resources/Images/Play_Button_Icon.png" Margin="2 5 2 0" Width="50"/>
         </Button>
-        <Button Grid.Column="1" FontSize="50" FontWeight="ExtraBold" FontFamily="Consolas" Foreground="LightGray" Grid.Row="2" Width="150" Height="70" 
-        HorizontalAlignment="Right" VerticalAlignment="Top" Margin="30 10 170 30" Background="LightGray" ToolTip="Edit">
-            <Image Source="Resources/Images/Edit_Button_Icon.png" Width="50"></Image>
+        <Button Name="Edit_Btn"  Grid.Column="1" FontSize="50" FontWeight="ExtraBold" FontFamily="Consolas" Foreground="LightGray" 
+                Grid.Row="2" Width="80" Height="50" HorizontalAlignment="Right" VerticalAlignment="Top" 
+                Margin="0 10 135 30" Background="LightGray" ToolTip="Edit" Click="Edit_Btn_Click">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="1"></Setter>
                 </Style>
             </Button.Resources>
+            <Image Source="Resources/Images/Edit_Button_Icon.png" Width="20"/>
+        </Button>
+        <Button Name="Delete_Btn"  Grid.Column="1" FontSize="50" FontWeight="ExtraBold" FontFamily="Consolas" Foreground="LightGray" 
+                Grid.Row="2" Width="80" Height="50" HorizontalAlignment="Right" VerticalAlignment="Top" 
+                Margin="0 10 220 30" Background="LightGray" ToolTip="Delete" Click="Delete_Btn_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="1"></Setter>
+                </Style>
+            </Button.Resources>
+            <Image Source="Resources\Images\Delete_Button_Icon.png" Width="20"/>
         </Button>
     </Grid>
 </Window>

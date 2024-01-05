@@ -1,4 +1,4 @@
-﻿ <Window x:Class="GameLauncherPJ.MainWindow"
+﻿<Window x:Class="GameLauncherPJ.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -12,7 +12,7 @@
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent" MouseDown="Window_MouseDown">
-    <Border Background="Transparent" BorderThickness="1" CornerRadius="10">
+  <Border Background="Transparent" BorderThickness="1" CornerRadius="10">
     <Grid Background="{StaticResource LauncherBG}">
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -22,47 +22,53 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button Name="Close_btn" Style="{StaticResource WindowButton}" Grid.Row="0" Grid.Column="1" Content="X" Click="Close_Btn_Click" Margin="3"/>
-        <Button Name="Minimize_btn" Style="{StaticResource WindowButton}" Grid.Row="0" Grid.Column="1" Content="-" Click="Minimize_Btn_Click" Padding="0 -6" Margin="3 3 30 3"  FontSize="30" FontWeight="ExtraBold"/>
-        <TextBox Name="Usernametxtbox" Style="{StaticResource RoundBorderButton}" Grid.Row="0" Grid.Column="1" Width="230" Height="40" TextWrapping="Wrap"
-                 HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="50 50 50 10" Padding="7" TextAlignment="Left" FontSize="15" GotFocus="Usernametxtbox_GotFocus" LostFocus="Usernametxtbox_LostFocus">
+        <Button Name="Close_btn" Style="{StaticResource WindowButton}" Grid.Row="0" Grid.Column="1" 
+                Content="X" Click="Close_Btn_Click" Margin="3"/>
+        <Button Name="Minimize_btn" Style="{StaticResource WindowButton}" Grid.Row="0" Grid.Column="1" 
+                Content="-" Click="Minimize_Btn_Click" Padding="0 -6" Margin="3 3 30 3"  FontSize="30" 
+                FontWeight="ExtraBold"/>
+        <TextBox Name="Usernametxtbox" Style="{StaticResource RoundBorderTextbox}" Grid.Row="0" 
+                 Grid.Column="1" Width="230" Height="40" TextWrapping="Wrap"
+                 HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="50 50 50 10" Padding="7" 
+                 TextAlignment="Left" FontSize="15" GotFocus="Usernametxtbox_GotFocus" 
+                 LostFocus="Usernametxtbox_LostFocus">
         </TextBox>
-        <PasswordBox Name="Passwordtxtbox" Grid.Row="1" Grid.Column="1" 
-                         Width="230" Height="40"
-                         HorizontalAlignment="Right" VerticalAlignment="Bottom"
-                         Margin="50 0 50 170" Padding="7" FontSize="15"
-                         PasswordChanged="Passwordtxtbox_PasswordChanged"
-                          GotFocus="Passwordtxtbox_GotFocus" LostFocus="Passwordtxtbox_LostFocus" >
-            <!--KeyDown="Passwordtxtbox_KeyDown"-->
-            <PasswordBox.Template>
-                <ControlTemplate TargetType="{x:Type PasswordBox}">
-                    <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="7" Background="White">
-                        <ScrollViewer x:Name="PART_ContentHost"/>
-                    </Border>
-                </ControlTemplate>
-            </PasswordBox.Template>
+        <PasswordBox Name="Passwordtxtbox" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right"
+                     Width="230" Height="40" PreviewKeyDown="Passwordtxtbox_PreviewKeyDown"
+                     VerticalAlignment="Bottom" Margin="50 0 50 170" LostFocus="Passwordtxtbox_LostFocus"
+                     Padding="7" FontSize="15" KeyDown="Passwordtxtbox_KeyDown"
+                     PasswordChanged="Passwordtxtbox_PasswordChanged" 
+                     GotFocus="Passwordtxtbox_GotFocus">
+          <PasswordBox.Template>
+            <ControlTemplate TargetType="{x:Type PasswordBox}">
+              <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="7" Background="White">
+                <ScrollViewer x:Name="PART_ContentHost"/>
+              </Border>
+            </ControlTemplate>
+          </PasswordBox.Template>
         </PasswordBox>
-        <TextBox Name="Passwordshowtxtbox" Style="{StaticResource RoundBorderButton}" Grid.Row="1" Grid.Column="1" Width="230" Height="40" TextWrapping="Wrap" HorizontalAlignment="Right" 
-                     VerticalAlignment="Bottom" Margin="50 0 50 170" Padding="7" TextAlignment="Left" FontSize="15" Visibility="Hidden" 
-                     KeyDown="Passwordshowtxtbox_KeyDown" TextChanged="Passwordshowtxtbox_TextChanged" >
-        </TextBox>
-        <Image Grid.Row="0" Grid.RowSpan="2" Grid.ColumnSpan="2" Source="\Resources\Images\Game_Launcher_Icon_Large.png" 
-               Width="350" Height="300" HorizontalAlignment="Left" 
-               VerticalAlignment="Center" Margin="60"/>
-        <Button Name="Login_btn" Content="LOGIN" Grid.Row="1" Grid.Column="1" 
-                    Width="100" Height="40" Margin="230 50 50 100"
-                    Background="Black" Foreground="#00b8e6" FontSize="30" FontWeight="Bold" 
-                    Padding="2" FontFamily="Corbel" Click="Login_btn_Click"/>
+        <TextBox Name="Passwordshowtxtbox" Style="{StaticResource RoundBorderTextbox}" Grid.Row="1" Grid.Column="1" 
+                 Width="230" Height="40" TextWrapping="Wrap" HorizontalAlignment="Right" VerticalAlignment="Bottom" 
+                 Margin="50 0 50 170" Padding="7" TextAlignment="Left" FontSize="15" Visibility="Hidden" 
+                 KeyDown="Passwordshowtxtbox_KeyDown" TextChanged="Passwordshowtxtbox_TextChanged" 
+                 PreviewKeyDown="Passwordshowtxtbox_PreviewKeyDown"/>
+        <Image   Grid.Row="0" Grid.RowSpan="2" Grid.ColumnSpan="2" Source="Resources\Images\Game_Launcher_Icon_Large.png" 
+                 Width="350" Height="300" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="60"/>
+        <Button Name="Login_btn" Content="LOGIN" Grid.Row="1" Grid.Column="1" FontWeight="Bold" 
+                    Width="100" Height="40" Margin="230 50 50 100" Padding="2" FontSize="30" 
+                    Background="Black" Foreground="#00b8e6" FontFamily="Corbel" Click="Login_btn_Click"/>
         <Button Name="ShowPassword_btn" Grid.Row="1" Grid.Column="1" Width="20" Height="20" 
                     Margin="310 10 50 170" Background="Transparent" Visibility="Hidden"
                     BorderBrush="Transparent" Click="ShowPassword_btn_Click">
             <Image Source="/Resources/Images/Show_Password_Icon.png" 
                      Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Button>
-        <Label Name="usernamelbl" Content="Username" Grid.Row="0" Grid.Column="1" Foreground="LightGray" Margin="-40 10 10 12" FontSize="20"
-                   HorizontalAlignment="Center" VerticalAlignment="Bottom" IsHitTestVisible="False"></Label>
-        <Label Name="passwordlbl" Content="Password" Grid.Row="1" Grid.Column="1" Foreground="LightGray" Margin="-40 14 10 10" FontSize="20"
-       HorizontalAlignment="Center" VerticalAlignment="Top" IsHitTestVisible="False"></Label>
+        <Label Name="usernamelbl" Content="Username" Grid.Row="0" Grid.Column="1" Foreground="LightGray" 
+               Margin="-40 10 10 12" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Bottom" 
+               IsHitTestVisible="False"></Label>
+        <Label Name="passwordlbl" Content="Password" Grid.Row="1" Grid.Column="1" Foreground="LightGray" 
+               Margin="-40 14 10 10" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" 
+               IsHitTestVisible="False"></Label>
     </Grid>
     </Border>
 </Window>

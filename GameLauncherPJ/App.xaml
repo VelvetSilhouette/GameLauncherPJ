@@ -2,9 +2,10 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:GameLauncherPJ"
-             StartupUri="MainMenu.xaml">
-<!--StartupUri="MainMenu.xaml">-->
+             StartupUri="MainWindow.xaml">
+             <!--StartupUri="MainWindow.xaml">-->
     <Application.Resources>
+        <!--Style for Minimize,Close button-->
         <Style TargetType="Button" x:Key="WindowButton">
             <Setter Property="Height" Value="30" ></Setter>
             <Setter Property="Width" Value= "30" ></Setter>
@@ -17,11 +18,38 @@
             <Setter Property="HorizontalAlignment" Value="Right"></Setter>
             <Setter Property="VerticalAlignment" Value="Top"></Setter>
         </Style>
-        <Style x:Key="RoundBorderButton" TargetType="TextBox">
+        <!--Style for button inside edit menu-->
+        <Style TargetType="Button" x:Key="EditMenuButton">
+            <Setter Property="Height" Value="30"></Setter>
+            <Setter Property="Width" Value="30"></Setter>
+            <Setter Property="Foreground" Value="#00b8e6"></Setter>
+            <Setter Property="Background" Value="Black"></Setter>
+        </Style>
+        <Style x:Key="RoundBorderTextbox" TargetType="TextBox">
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="TextBox">
                         <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="7" Background="White">
+                            <ScrollViewer x:Name="PART_ContentHost">
+                            </ScrollViewer>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!--Round Textbox Style-->
+        <Style x:Key="RoundBorderTextbox2" TargetType="TextBox">
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Padding" Value="10 10 30 10"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="TextWrapping" Value="WrapWithOverflow"/>
+            <Setter Property="Foreground" Value="Gray"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="7" Background="Transparent">
                             <ScrollViewer x:Name="PART_ContentHost">
                             </ScrollViewer>
                         </Border>

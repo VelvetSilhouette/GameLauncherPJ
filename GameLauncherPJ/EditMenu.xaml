@@ -1,0 +1,50 @@
+﻿<Window x:Class="GameLauncherPJ.EditMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GameLauncherPJ"
+        mc:Ignorable="d" WindowStyle="None"
+        Title="EditMenu" Height="500" Width="800">
+    <Canvas Background="{StaticResource LauncherBG}">
+        <Button Name="Close_btn3" Style="{StaticResource WindowButton}" Canvas.Right="3" Canvas.Top="3" Content="X"
+                Click="Close_btn3_Click" Margin="3"/>
+        <Button Style="{StaticResource EditMenuButton}" Name="ExeLinkButton" Content="..." Panel.ZIndex="1" 
+                Canvas.Right="55" Canvas.Top="140" Click="ExeLinkButton_Click"></Button>
+        <Button Style="{StaticResource EditMenuButton}" Name="PictureLinkButton"  Content="..." Panel.ZIndex="1" 
+                Canvas.Right="55" Canvas.Top="220" Click="PictureLinkButton_Click"></Button>
+        <StackPanel Canvas.Left="50" Canvas.Top="50" Width="700" Height="350">
+            <TextBox Text="{Binding SelectedEdit.GameName}" Foreground="White" Style="{StaticResource RoundBorderTextbox2}"
+                     Name="GameName_TxtBox" Margin="0 0 0 30">
+            </TextBox>
+            <TextBox Text="{Binding SelectedEdit.ExeLink}" Foreground="White" Style="{StaticResource RoundBorderTextbox2}" 
+                     Name="GameExeLink_TxtBox" Margin="0 0 0 30">
+            </TextBox>
+            <TextBox Text="{Binding SelectedEdit.PictureLink}" Foreground="White" Style="{StaticResource RoundBorderTextbox2}" 
+                     Name="GameImg_TxtBox" Margin="0 0 0 30">
+            </TextBox>
+            <TextBox Text="{Binding SelectedEdit.GameDesc}" Foreground="White" Style="{StaticResource RoundBorderTextbox2}" 
+                     Name="GameDesc_TxtBox" Margin="0 0 0 30" Height="100"
+                     VerticalScrollBarVisibility="Auto">
+            </TextBox>
+        </StackPanel>
+        <Grid Canvas.Bottom="0" Height="70" Width="800">
+            <Button Name="Edit_Btn" Background="Black" Foreground="#00b8e6" Content="Edit" FontSize="30" Margin="0 0 50 5" Height="50" Width="100"
+                    HorizontalAlignment="Right" Click="Edit_Button_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="7"></Setter>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button Content="Reset" Background="Black" Foreground="#00b8e6" FontSize="30" Margin="0 0 170 5" Width="100" Height="50"
+                    HorizontalAlignment="Right">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="7"></Setter>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </Grid>
+    </Canvas>
+</Window>

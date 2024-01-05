@@ -50,17 +50,21 @@ namespace GameLauncherPJ
                 usernamelbl.Visibility = Visibility.Visible;
             }
         }
-
+        private void Usernametxtbox_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            e.Handled = e.Key == Key.Space ? true : false;
+        }
         //making a show password button
         private void Passwordtxtbox_PasswordChanged(object sender, RoutedEventArgs e)
         {
             ShowPassword_btn.Visibility = Passwordtxtbox.Password.Length > 0 || Passwordshowtxtbox.Text.Length > 0 ? Visibility.Visible : Visibility.Hidden;
         }
         //show/hide password when clicking
+
+        // TODO: lam them focus cursor
         private void ShowPassword_btn_Click(object sender, RoutedEventArgs e)
         {
             //Show password button
- 
             if (Passwordshowtxtbox.Visibility == Visibility.Visible)
             {
                 Passwordshowtxtbox.Visibility = Visibility.Hidden;
@@ -82,21 +86,16 @@ namespace GameLauncherPJ
 
         private void Passwordtxtbox_PreviewKeyDown(object sender, KeyEventArgs e)
         {
+            e.Handled = e.Key == Key.Space ? true : false;
             if (e.Key == Key.Enter)
             {
                 Login_btn_Click(sender, e);
             }
-
-            
-            /* if (Passwordtxtbox.Password.Length >= 16)
-            { e.Handled = true; }*/
         }
-
         private void Passwordtxtbox_GotFocus(object sender, RoutedEventArgs e)
         {
             passwordlbl.Visibility = Visibility.Hidden;
         }
-
         private void Passwordtxtbox_LostFocus(object sender, RoutedEventArgs e)
         {
             if (Passwordtxtbox.Password.ToString() == "" && Passwordshowtxtbox.Text == "")
@@ -104,11 +103,17 @@ namespace GameLauncherPJ
                 passwordlbl.Visibility = Visibility.Visible;
             }
         } 
-
-
         private void Passwordshowtxtbox_KeyDown(object sender, KeyEventArgs e)
         {
             e.Handled = Passwordshowtxtbox.Text.Length >= 16 || Passwordshowtxtbox.Text.Length >= 16 ? true : false;
+        }
+        private void Passwordshowtxtbox_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            e.Handled = e.Key == Key.Space ? true : false;
+            if (e.Key == Key.Enter)
+            {
+                Login_btn_Click(sender, e);
+            }
         }
         //Login button, for now use a test account to test login to MainMenu
         //id: admin | password:admin
@@ -120,6 +125,8 @@ namespace GameLauncherPJ
                 { 
                     MainMenu mainMenu = new MainMenu();
                     mainMenu.Show();
+                    Window1 window1 = new Window1();
+                    window1.Show();
                     this.Close();
                 }
                 else
@@ -129,7 +136,6 @@ namespace GameLauncherPJ
             }
             else
             { MessageBox.Show("Please Enter the right account information","Wrong account or password"); }
-
         }
         private void Passwordshowtxtbox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -140,7 +146,6 @@ namespace GameLauncherPJ
                 Passwordtxtbox.Password = "";
             }
         }
-
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
@@ -148,6 +153,5 @@ namespace GameLauncherPJ
                 this.DragMove();
             }
         }
-
     }
 }
